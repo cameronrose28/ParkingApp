@@ -1,0 +1,22 @@
+{
+  "name": "ipark",
+  "version": "1.0.0",
+  "description": "Custom parking reservation app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cameronrose28/ParkingApp.git"
+  },
+  "author": "Cameron Rose, Marko Jurcic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cameronrose28/ParkingApp/issues"
+  },
+  "homepage": "https://github.com/cameronrose28/ParkingApp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
