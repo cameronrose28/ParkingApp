@@ -16,6 +16,6 @@ body {
 /* Other Classes for Page Styling */
 
 body {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
+  background: #c4c4c4;
+  background: linear-gradient(to right, rgb(187, 228, 255), rgb(156, 224, 255));
 }
