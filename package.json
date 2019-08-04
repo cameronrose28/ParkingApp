@@ -4,7 +4,8 @@
   "description": "Custom parking reservation app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/cameronrose28/ParkingApp#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "nodemon": "^1.19.1"
   }
 }
