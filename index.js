@@ -4,7 +4,7 @@ const exphbs = require("express-handlebars");
 // Init Express
 const app = express();
 
-// // Express body parser
+// Express body parser
 app.use(express.urlencoded({ extended: true }));
 
 // JSON body parser
