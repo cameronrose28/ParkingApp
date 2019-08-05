@@ -16,6 +16,8 @@ app.set("view engine", "handlebars");
 
 // Routes
 app.use("/", require("./routes/index.js"));
+
+// Sets static assets folder
 app.use('/public', express.static('public'));
 
 // If the route can't be found then show the 404 page
