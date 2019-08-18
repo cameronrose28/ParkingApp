@@ -1,5 +1,11 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const mongoose = require("mongoose")
+const db = require("./config/db").mongoURI;
+const db1 = require("./config/db").derp;
+
+console.log(db1);
+
 
 // Init Express
 const app = express();
@@ -19,6 +25,14 @@ app.use("/", require("./routes/index.js"));
 
 // Sets static assets folder
 app.use('/public', express.static('public'));
+
+
+
+//database
+mongoose
+.connect(db, {useNewUrlParser:true})
+.then(() => console.log("Connection Successfull") )
+.catch(err => console.log(`Err is ${err}`))
 
 // If the route can't be found then show the 404 page
 app.get("*", function(req, res) {

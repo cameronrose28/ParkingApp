@@ -21,8 +21,12 @@
     "bcrypt": "^3.0.6",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+<<<<<<< HEAD
     "lodash": "^4.17.15",
     "mongoose": "^5.6.8",
+=======
+    "mongoose": "^5.6.9",
+>>>>>>> 3b0a33cc617067cc9569ccbac757298895de2906
     "multer": "^1.4.2",
     "nodemon": "^1.19.1",
     "passport-local": "^1.0.0"
