@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+//Notes:
+// Bollean for admin or?
+
 
 const UserSchema = new mongoose.Schema({
     name: {
