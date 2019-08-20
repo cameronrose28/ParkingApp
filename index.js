@@ -2,10 +2,6 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose")
 const db = require("./config/db").mongoURI;
-const db1 = require("./config/db").derp;
-
-console.log(db1);
-
 
 // Init Express
 const app = express();
@@ -23,10 +19,8 @@ app.set("view engine", "handlebars");
 // Routes
 app.use("/", require("./routes/index.js"));
 
-// Sets static assets folder
-app.use('/public', express.static('public'));
-
-
+// Static Directory
+app.use(express.static("public"));
 
 //database
 mongoose
