@@ -2,12 +2,22 @@ const express = require("express");
 
 const router = express.Router();
 
+
 //Importing Controller
 const ParkingSpotController = require("../controllers/ParkingSpotController")
 const SiteConfigController = require("../controllers/SiteConfigController")
+const UsersController = require('../controllers/UsersController')
+const Passport = require ('../config/passport')
 
 router.get("/", (req, res) => {
-  res.send("Hi");
+  if(req.user){
+    res.send(`logged in as ${req.user.username}`);
+    console.log(req.isAuthenticated())
+  }else{
+    res.send("not logged in");
+    console.log(req.isAuthenticated())
+  }
+  
 });
 
 router.get("/home", (req, res) => {
@@ -18,7 +28,10 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/test", SiteConfigController.GetSiteEmail)
-  
+router.get("/test", UsersController.DummyData)
+
+router.post("/testpost", SiteConfigController.PostSiteConfig)
+
+router.post('/validatelogin', UsersController.login)
 
 module.exports = router;

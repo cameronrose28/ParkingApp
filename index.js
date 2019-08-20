@@ -2,13 +2,15 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose")
 const db = require("./config/db").mongoURI;
-const db1 = require("./config/db").derp;
-
-console.log(db1);
+const passport = require('passport');
+const session = require('express-session')
+const MongoStore = require("connect-mongo")(session);
 
 
 // Init Express
 const app = express();
+
+require("./config/passport")(passport);
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
@@ -20,19 +22,33 @@ app.use(express.json());
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-// Routes
-app.use("/", require("./routes/index.js"));
+
+
 
 // Sets static assets folder
 app.use('/public', express.static('public'));
-
-
 
 //database
 mongoose
 .connect(db, {useNewUrlParser:true})
 .then(() => console.log("Connection Successfull") )
 .catch(err => console.log(`Err is ${err}`))
+
+// Initialise express-session
+app.use(
+  session({
+    secret: "secret",
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes - Nothing after this
+app.use("/", require("./routes/index.js"));
 
 // If the route can't be found then show the 404 page
 app.get("*", function(req, res) {
