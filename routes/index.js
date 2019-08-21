@@ -28,6 +28,13 @@ router.get("/test", UsersController.DummyData)
 
 router.post("/testpost", SiteConfigController.PostSiteConfig)
 
+// Check the login credentials against the database
 router.post('/validatelogin', UsersController.login)
+
+// Logout
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/login');
+});
 
 module.exports = router;
