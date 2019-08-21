@@ -15,9 +15,8 @@ exports.DummyData = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
-    passport.authenticate("local", {
+    10YRSpassport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "/home",
-        failureFlash: true
       })(req, res, next);
 }
