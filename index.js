@@ -2,10 +2,13 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose")
 const db = require("./config/db").mongoURI;
+<<<<<<< HEAD
 const passport = require('passport');
 const session = require('express-session')
 const MongoStore = require("connect-mongo")(session);
 
+=======
+>>>>>>> 5654f12615a2905538b4626a65c39025fc3ae2d4
 
 // Init Express
 const app = express();
@@ -23,10 +26,15 @@ app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
 
+<<<<<<< HEAD
 
 
 // Sets static assets folder
 app.use('/public', express.static('public'));
+=======
+// Static Directory
+app.use(express.static("public"));
+>>>>>>> 5654f12615a2905538b4626a65c39025fc3ae2d4
 
 //database
 mongoose

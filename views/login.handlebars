@@ -1,11 +1,21 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+<div class="d-flex h-100">
+  <div class="col-md-3 m-auto pt-5 pb-5">
+    <div class="card card-body">
+      <div class="card-header card-header-primary">
+        <h2 class="card-title text-center mb-3">Login</h2>
+      </div>
+      <form action="/validatelogin" method="POST">
+        <div class="form-group">
+          <input type="text" id="email" name="email" class="form-control" placeholder="Enter Email" />
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
     </div>
+<<<<<<< HEAD
 
     <!-- Login Form -->
     <form method="POST" action='/validatelogin'>
@@ -19,5 +29,7 @@
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
 
+=======
+>>>>>>> 5654f12615a2905538b4626a65c39025fc3ae2d4
   </div>
 </div>
