@@ -10,7 +10,7 @@ const UsersController = require('../controllers/UsersController')
 const Passport = require ('../config/passport')
 
 router.get("/", (req, res) => {
-  if(req.user){
+  if(req.isAuthenticated()){
     res.send(`logged in as ${req.user.username}`);
     console.log(req.isAuthenticated())
   }else{
