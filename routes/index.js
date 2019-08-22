@@ -9,8 +9,9 @@ const SiteConfigController = require("../controllers/SiteConfigController")
 const UsersController = require('../controllers/UsersController')
 const Passport = require ('../config/passport')
 const Auth = require ('../config/isauth')
+
 // Index route
-router.get("/", (req, res) => {
+router.get("/", Auth.ensureNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
@@ -36,5 +37,8 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
+
+// Register new User
+router.post("/RegisterNewUser", UsersController.UserRegister)
 
 module.exports = router;

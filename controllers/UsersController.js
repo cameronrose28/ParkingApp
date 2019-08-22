@@ -1,5 +1,6 @@
 const passport = require("passport");
 const User = require("../models/UserModel");
+const bcrypt = require("bcrypt");
 
 exports.DummyData = (req, res) => {
   const user = new User({
@@ -21,3 +22,25 @@ exports.login = (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 };
+
+exports.UserRegister = (req,res) => {
+  console.log(req.body)
+  bcrypt.hash(req.body.password, 10, function(err, hash) {
+    if (err) {
+       throw err;
+    }
+    const user = new User({
+      username: req.body.username,
+      name: req.body.name,
+      password: hash
+    });
+  
+    user
+      .save()
+      .then(res.send("Success"))
+      .catch(err => console.log(err));
+ 
+  });
+};
+
+
