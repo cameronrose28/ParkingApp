@@ -19,6 +19,7 @@
   "homepage": "https://github.com/cameronrose28/ParkingApp#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^3.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",

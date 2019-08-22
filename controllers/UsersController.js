@@ -16,7 +16,8 @@ exports.DummyData = (req, res) => {
 
 exports.login = (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/home"
+    successRedirect: "/dashboard",
+    failureRedirect: "/",
+    failureFlash: true
   })(req, res, next);
 };

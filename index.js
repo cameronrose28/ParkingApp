@@ -5,6 +5,7 @@ const db = require("./config/db").mongoURI;
 const passport = require('passport');
 const session = require('express-session')
 const MongoStore = require("connect-mongo")(session);
+const flash = require("connect-flash");
 
 
 // Init Express
@@ -51,14 +52,15 @@ app.use(flash());
 
 // Global variables
 app.use(function(req, res, next) {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
+  
   next();
 });
 
 app.use(function(req, res, next){
   res.locals.user = req.user;
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
   next();
 });
 
