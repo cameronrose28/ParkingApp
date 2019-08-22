@@ -1,6 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
 const Users = require('../models/UserModel')
-const bcrypt = require ('bcrypt')
 
 module.exports = (passport) => {
   passport.use(new LocalStrategy({
@@ -11,12 +10,12 @@ module.exports = (passport) => {
       .then((userrecord) => {
         if(!userrecord) {
           console.log("Der?")
-          return done(null, false, { message: { 'user or password': 'is invalid' } });
+          return done(null, false, { errors: { 'user or password': 'is invalid' } });
         };
         bcrypt.compare(password, userrecord.password, function(err, isMatch) {
           if(err) throw err;
           if (!isMatch) {
-            return done(null, false, { message: { 'user or password': 'is invalid' } });
+            return done(null, false, { errors: { 'user or password': 'is invalid' } });
           };
           return done(null, userrecord);
         })}).catch(done);
@@ -35,3 +34,5 @@ passport.deserializeUser(function(id, done) {
 });
 
 }
+
+

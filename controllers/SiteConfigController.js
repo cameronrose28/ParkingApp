@@ -13,6 +13,16 @@ exports.PostSiteConfig = (req, res) => {
 
 }
 
+<<<<<<< HEAD
+=======
+//    const siteconfig = new SiteConfig ({
+//        CompanyName: "Test Company", 
+//        ConcurrentReserve: 2,
+//        ResponseEmail: "Test@test.com.au"
+/* test */
+
+
+>>>>>>> 9cab239538a35cdf0f9e8080b60eb857fe94b969
 
 exports.GetSiteEmail = (req, res) => {
     SiteConfig.find({}, (error, SiteDetails) => {
