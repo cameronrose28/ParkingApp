@@ -4,6 +4,7 @@ exports.ensureAuthenticated = (req, res, next) => {
     if(req.isAuthenticated()){
         next();
     }else {
+        req.flash('error_msg', 'Please login to view page')
         res.status(401).render("login");
     }
 }

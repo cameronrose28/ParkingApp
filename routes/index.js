@@ -38,7 +38,21 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+router.get("/newuser", Auth.ensureAuthenticated, (req, res) => {
+  res.render("newuser")
+}) 
+
 // Register new User
 router.post("/RegisterNewUser", UsersController.UserRegister)
 
+//Get All Parking Spots
+router.get("/GetParkingSpots", ParkingSpotController.GetAllParkingSpots)
+
+router.get("/SessionData", (req, res) => {
+  console.log(req.user)
+})
+
+router.get("/siteconfig", Auth.ensureAuthenticated, SiteConfigController.GetSiteConfig)
+
+router.post("/postsiteconfig", SiteConfigController.PostSiteConfig)
 module.exports = router;

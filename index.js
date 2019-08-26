@@ -51,11 +51,6 @@ app.use(passport.session());
 app.use(flash());
 
 // Global variables
-app.use(function(req, res, next) {
-  
-  next();
-});
-
 app.use(function(req, res, next){
   res.locals.user = req.user;
   res.locals.success_msg = req.flash("success_msg");
@@ -69,7 +64,7 @@ app.use("/", require("./routes/index.js"));
 
 // If the route can't be found then show the 404 page
 app.get("*", function(req, res) {
-  res.status(404).render("404");
+  res.status(404).render("404", {layout:"test"});
 });
 
 // Sets the port
