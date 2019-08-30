@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     }
     body {
-            background: url('/images/naturebackground.jpg') no-repeat center center fixed;
+            background: url('images/naturebackground.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -17,16 +17,19 @@ html, body {
     <div class="card card-body">
       <div class="card-header card-header-primary">
         {{>messages}}
-        <h2 class="card-title text-center mb-3">Login</h2>
+        <h2 class="card-title text-center mb-3">Register</h2>
       </div>
-      <form action="/validatelogin" method="POST">
+      <form action="/RegisterNewUser" method="POST">
         <div class="form-group">
           <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username" />
         </div>
         <div class="form-group">
+          <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" />
+        </div>
+        <div class="form-group">
           <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
       </form>
     </div>
   </div>

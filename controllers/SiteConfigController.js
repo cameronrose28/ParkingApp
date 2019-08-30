@@ -6,7 +6,11 @@ exports.PostSiteConfig = (req, res) => {
 
     SiteConfig.find({}, (error, SiteDetails) => {
 
-        SiteConfig.findOneAndUpdate({_id: SiteDetails[0]._id}, {$set: {CompanyName: req.body.CompanyName, ConcurrentReserve: req.body.ConcurrentReserve, ResponseEmail: req.body.ResponseEmail}})
+        SiteConfig.findOneAndUpdate({_id: SiteDetails[0]._id}, {$set: {
+            CompanyName: req.body.CompanyName, 
+            ReserveAmount: req.body.ReserveAmount,
+            ReserveCooldown: req.body.ReserveCooldown,
+            ResponseEmail: req.body.ResponseEmail}})
             .then(res.render("siteconfig", SiteConfig.GetSiteConfig))
             .catch(error => console.log(error))
 })

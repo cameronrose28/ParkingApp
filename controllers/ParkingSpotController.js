@@ -3,11 +3,22 @@ const ParkingSpot = require("../models/ParkingSpot");
 
 // Posts a single parking spot
 exports.PostParkingSpot = (req, res) => {
-  const parkingspot = new ParkingSpot({ Spot: "2A", Owner: "Joe" });
-  parkingspot
-    .save()
-    .then(res.send("Success"))
-    .catch(err => console.log(err));
+  ParkingSpot.findOne({spot: req.body.spot})
+  .then((existingspot) => {
+    if (existingspot) {
+      res.status(409).render("createparkingspot", {error_msg: "Spot AlreadyExists"})
+    } else {
+      const parkingspot = new ParkingSpot({ 
+        spot: req.body.spot, 
+        owner: req.body.owner });
+        
+      parkingspot
+        .save()
+        .then(res.send("Success"))
+        .catch(err => console.log(err));
+    }
+  })
+
 };
 
 // Posts multiple parking spots

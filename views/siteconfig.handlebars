@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     }
     body {
-            background: url('/images/naturebackground.jpg') no-repeat center center fixed;
+            background: url('images/naturebackground.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -19,12 +19,15 @@ html, body {
         {{>messages}}
         <h2 class="card-title text-center mb-3">Login</h2>
       </div>
-      <form action="/validatelogin" method="POST">
+      <form action="/PostSiteConfig" method="POST">
         <div class="form-group">
-          <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username" />
+          <input type="text" id="CompanyName" name="CompanyName" class="form-control" value="{{SiteDetails.CompanyName}}" />
         </div>
         <div class="form-group">
-          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+          <input type="text" id="ConcurrentReserve" name="ConcurrentReserve" class="form-control" value="{{SiteDetails.ConcurrentReserve}}" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="ResponseEmail" name="ResponseEmail" class="form-control" value="{{SiteDetails.ResponseEmail}}" />
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>

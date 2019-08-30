@@ -1,15 +1,19 @@
 const mongoose = require('mongoose')
 
 const SiteConfigSchema = new mongoose.Schema({
-    CompanyName: {
+    companyname: {
         type: String,
         required: true
     },
-    ConcurrentReserve: {
+    reserveamount: {
         type: Number,
         required: true
     },
-    ResponseEmail: {
+    reservecooldown: {
+        type: Number,
+        required: true
+    },
+    responseemail: {
         type: String,
         required: true
     }

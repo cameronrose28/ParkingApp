@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 const UserSchema = new mongoose.Schema({
-    username: {
+    email: {
         type: String,
         require: true
     },
@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    permissionGroup: {
+    Role: {
         type: String,
         require: false
     }

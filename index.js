@@ -1,12 +1,13 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const db = require("./config/db").mongoURI;
 const passport = require('passport');
-const session = require('express-session')
+const session = require('express-session');
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
-
+const path = require("path");
+const Auth = require ('./config/isauth')
 
 // Init Express
 const app = express();
@@ -59,8 +60,13 @@ app.use(function(req, res, next){
   next();
 });
 
+app.use(Auth.ensureAuthenticated)
+
 // Routes - Nothing after
 app.use("/", require("./routes/index.js"));
+app.use("/parking", require("./routes/parking.js"));
+
+
 
 // If the route can't be found then show the 404 page
 app.get("*", function(req, res) {

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const ParkingSpotSchema = new mongoose.Schema({
-  Spot: {
+  spot: {
     type: String,
     required: true
   },
-  Owner: {
+  owner: {
     type: String,
     required: false
   }

@@ -1,10 +1,11 @@
 const passport = require("passport");
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
+const log = require ("../controllers/LogController")
 
 exports.DummyData = (req, res) => {
   const user = new User({
-    username: "Bob.Dole",
+    email: "Bob.Dole@test.com.au",
     name: "Bob Dole",
     password: "derppy"
   });
@@ -24,7 +25,7 @@ exports.login = (req, res, next) => {
 };
 
 exports.UserRegister = (req,res) => {
-  User.findOne({username: req.body.username})
+  User.findOne({email: req.body.username})
   .then((existinguser) => {
     if (existinguser) {
       res.status(409).render("newuser", {error_msg: "User Already Exists"})
@@ -34,20 +35,29 @@ exports.UserRegister = (req,res) => {
          throw err;
       }
       const user = new User({
-        username: req.body.username,
+        email: req.body.username,
         name: req.body.name,
         password: hash,
-        permissionGroup: req.body.permissionGroup
+        role: req.body.role
       });
     
       user
         .save()
-        .then(res.status(409).render("newuser", {success_msg: `User ${req.body.username} created Successfully`}))
+        .then(
+          log.PostLog("SUCCESS", `User ${req.body.username} created Successfully`),
+          res.status(200).render("newuser", {success_msg: `User ${req.body.username} created Successfully`}))
         .catch(err => console.log(err));
    
     });
   }
   })
+};
+
+exports.UsersList = (req, res) => {
+  User.find({}, {name : 1}, (error, User) => {
+    if(error) { return handleError(res, err); }
+    res.send(User)
+  });
 };
 
 
