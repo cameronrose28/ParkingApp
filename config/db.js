@@ -2,7 +2,3 @@ database = "mongodb+srv://iparkserv:hfKmZQWeNz0LP9UO@cluster0-5wctp.mongodb.net/
 module.exports = {
     mongoURI: database
 }
-
-module.exports = {
-  mongoURI: database
-};

@@ -7,19 +7,20 @@ exports.PostSiteConfig = (req, res) => {
     SiteConfig.find({}, (error, SiteDetails) => {
 
         SiteConfig.findOneAndUpdate({_id: SiteDetails[0]._id}, {$set: {
-            CompanyName: req.body.CompanyName, 
-            ReserveAmount: req.body.ReserveAmount,
-            ReserveCooldown: req.body.ReserveCooldown,
-            ResponseEmail: req.body.ResponseEmail}})
+            companyname: req.body.CompanyName, 
+            reserveamount: req.body.ReserveAmount,
+            reservecooldown: req.body.ReserveCooldown,
+            responseemail: req.body.ResponseEmail}})
             .then(res.render("siteconfig", SiteConfig.GetSiteConfig))
             .catch(error => console.log(error))
 })
 
 }
 
-exports.GetSiteEmail = (req, res) => {
-    SiteConfig.find({}, (error, SiteDetails) => {
-        res.render("home", {SiteDetails});
+exports.GetSiteEmail = () => {
+    SiteEmail.findOne({responseemail: 1}, (error, SiteDetails) => {
+        console.log(SiteEmail.responseemail)
+        return SiteEmail.responseemail
     })
 }
 

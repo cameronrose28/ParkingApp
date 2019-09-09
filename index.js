@@ -8,6 +8,8 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const path = require("path");
 const Auth = require ('./config/isauth')
+const sgMail = require('@sendgrid/mail');
+const sgAPI = require ('./config/sendgrid').sendgridURI;
 
 // Init Express
 const app = express();
@@ -33,6 +35,9 @@ mongoose
 .connect(db, {useNewUrlParser:true})
 .then(() => console.log("Connection Successfull") )
 .catch(err => console.log(`Err is ${err}`))
+
+//Sendgrid
+sgMail.setApiKey(sgAPI);
 
 // Initialise express-session
 app.use(

@@ -48,9 +48,10 @@ router.get("/SessionData", (req, res) => {
 //Gets List of Users
 router.get("/userlist", UsersController.UsersList)
 
-
 router.get("/siteconfig", SiteConfigController.GetSiteConfig)
 
 router.post("/postsiteconfig", SiteConfigController.PostSiteConfig)
+
+router.get("/testmail", UsersController.Testmail)
 
 module.exports = router;
